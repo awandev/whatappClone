@@ -5,11 +5,14 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import ChatListItem from '../components/ChatListItem'
 
+import chatRooms from '../data/ChatRooms'
+
+
 
 export default function ChatScreen() {
   return (
     <View style={styles.container}>
-      <ChatListItem chatRoom={{ lastMessage: { content: "Hello" } }} />
+      <ChatListItem chatRoom={chatRooms[0]} />
     </View>
   );
 }
