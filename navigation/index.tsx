@@ -6,11 +6,17 @@ import { color } from 'react-native-reanimated';
 import Colors from '../constants/Colors';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
+import ChatRoomScreen from '../screens/ChatRoomScreen'
 import { RootStackParamList } from '../types';
 import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
-import { Octicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import {
+  Octicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+  FontAwesome5
+} from '@expo/vector-icons'
 
 
 
@@ -60,7 +66,28 @@ function RootNavigator() {
               <MaterialCommunityIcons name="dots-vertical" size={22} color={'white'} />
             </View>
           )
-        }} />
+        }}
+      />
+      <Stack.Screen
+        name="ChatRoom"
+        component={ChatRoomScreen}
+        options={({ route }) => (
+          {
+            title: route.params.name,
+            headerRight: () => (
+              <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: 100,
+                marginRight: 10,
+              }}>
+                <MaterialIcons name="call" size={22} color={'white'} />
+                <FontAwesome5 name="video" size={22} color={'white'} />
+                <MaterialCommunityIcons name="dots-vertical" size={22} color={'white'} />
+              </View>
+            )
+          }
+        )} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
